@@ -1,13 +1,28 @@
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import Navbar from "./Navbar.jsx";
+import Footer from "./Footer.jsx";
+
+function Layout() {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      <main className="flex-1 p-4">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
 function App() {
   return (
-    <>
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
-          <a className="btn btn-ghost text-xl">DevTinder</a>
-        </div>
-      </div>
-      <div className="p-4">Hello World</div>
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<p>Homepage</p>} />
+        <Route path="connections" element={<p>Here is connections page</p>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   );
 }
 
