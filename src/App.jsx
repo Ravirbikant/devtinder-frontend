@@ -1,7 +1,12 @@
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <a className="btn btn-ghost text-xl">DevTinder</a>
+        </div>
+      </div>
+      <div className="p-4">Hello World</div>
     </>
   );
 }

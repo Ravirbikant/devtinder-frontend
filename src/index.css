@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Optional: customize theme (Tailwind v4 CSS-first config) */
+@theme {
+  /* Example: default heading font size if you want base styles */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+}
