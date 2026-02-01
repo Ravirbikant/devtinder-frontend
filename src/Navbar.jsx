@@ -13,7 +13,7 @@ function Navbar() {
       await axios.post(`${BASE_URL}/logout`, null, { withCredentials: true });
     } finally {
       dispatch(removeUser());
-      navigate("/");
+      navigate("/login");
     }
   }
 

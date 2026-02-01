@@ -31,7 +31,8 @@ function Login() {
       dispatch(addUser(data));
       navigate("/feed");
     } catch (err) {
-      setError(err.response?.data?.message ?? "Login failed");
+      console.log(err.response);
+      setError(err.response?.data ?? "Login failed");
     } finally {
       setLoading(false);
     }
