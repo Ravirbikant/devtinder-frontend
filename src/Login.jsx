@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { addUser } from "./store/userSlice.js";
 
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("Sachin@gmail.com");
   const [password, setPassword] = useState("Sachin@123");
   const [loading, setLoading] = useState(false);
@@ -12,7 +17,7 @@ function Login() {
     setError("");
     setLoading(true);
     try {
-      await axios.post(
+      const { data } = await axios.post(
         "http://localhost:3000/login",
         {
           emailId: email,
@@ -22,6 +27,8 @@ function Login() {
           withCredentials: true,
         },
       );
+      dispatch(addUser(data));
+      navigate("/feed");
     } catch (err) {
       setError(err.response?.data?.message ?? "Login failed");
     } finally {
